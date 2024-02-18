@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>XXL Storage Tanks</name>
+	<author>KahirDragoon</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+	<packageId>kahirdragoon.xxlstoragetanks</packageId>
+	<description>
+Resizes the tank capacity of vanilla fuel network mods according to increased or decreased stack sizes. 
+
+Most likely works with all stack size mods. Tested with OgreStack and XXL Stack.
+
+Should work for all mods using the vanilla expanded pipe network. 
+Tested with
+- Vanilla Nutrient Paste Expanded
+- Vanilla Nutrient Paste Expanded - Deep Vat
+- Vanilla Chemfuel Expanded
+- Vanilla Races Expanded - Sanguophage
+- More Hemogen Vats
+- Vanilla Milk Expanded
+- Milk Pipe Network
+- Ancient Hydroponic Farm Facilities
+
+A restart is required for the tanks to resize if you change the stack size of things. If you reduce the size and the tank was full, the excess contents will be lost.
+
+Can be added or removed mid game although all extra content above the initial maximum will be lost.
+
+How?
+By calculating the ratio of the storage capacity to the original stack size and then multiplying this ratio with the new stack size. For good measure, I also round up the capacities the 100 or else there sometime would be horribly numbers like 33336, instead of nice ones like 33400.
+
+Load order
+Apparently, it doesn't matter, although I have yet to fully understand why. I expected the mod would have to be loaded before stack size changing mods since I am loading and saving the original stack limits. And then execute code after all mods are loaded to use the difference. But in my tests, I get the correct numbers regardless of whether my mod is the first or last in the mod list.
+Please tell me if you have a stack size changing mod where the load order compared to this mod matters.
+	</description>
+	<modDependencies>
+		<li>
+			<packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
+			<displayName>Vanilla Expanded Framework</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1854607105</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>Ludeon.RimWorld</li>
+		<li>Ludeon.RimWorld.Royalty</li>
+		<li>Ludeon.RimWorld.Ideology</li>
+		<li>Ludeon.RimWorld.Biotech</li>
+	</loadAfter>
+</ModMetaData>
